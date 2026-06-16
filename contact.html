@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contacto | AVILA & AVILA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #0A0E27 0%, #1a1f3a 100%);
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated background elements */
+.bg-accent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.accent-blob {
+  position: absolute;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  animation: float 15s ease-in-out infinite;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(45deg, #00d4ff, #0099ff);
+  top: -100px;
+  left: -100px;
+}
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, #00ff88, #00d4ff);
+  bottom: 100px;
+  right: -50px;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(30px, -30px) rotate(180deg); }
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 39, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
+nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff, #00ff88);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #00d4ff;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a.active {
+  color: #00d4ff;
+}
+
+nav a.active::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #00d4ff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Page Header */
+.page-header {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  margin-top: 80px;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.page-header .content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.page-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #9ca3af;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+/* Sections */
+section {
+  padding: 120px 8%;
+  position: relative;
+  z-index: 1;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  color: #00d4ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.info-block {
+  display: flex;
+  gap: 25px;
+}
+
+.info-icon {
+  font-size: 2.5rem;
+  color: #00d4ff;
+  min-width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-content h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.info-content p {
+  color: #9ca3af;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Contact Form */
+.contact-form {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 12px;
+  padding: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.contact-form h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #e5e7eb;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.4);
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  color: #0a0e27;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+}
+
+/* Footer */
+footer {
+  padding: 80px 8%;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  text-align: center;
+}
+
+footer h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+footer p {
+  color: #9ca3af;
+  margin: 10px 0;
+  letter-spacing: 0.5px;
+}
+
+/* Chat Widget */
+#chat-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+#chat-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.6);
+}
+
+#chat-window {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 380px;
+  height: 550px;
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(15, 20, 40, 0.9));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+  z-index: 100;
+}
+
+#chat-header {
+  padding: 20px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  color: #0a0e27;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#chat-input {
+  display: flex;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+#chat-input input {
+  flex: 1;
+  padding: 15px;
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+#chat-input input::placeholder {
+  color: #6b7280;
+}
+
+#chat-input button {
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  border: none;
+  color: #0a0e27;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#chat-input button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .page-header h1 {
+    font-size: 3.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 20px 6%;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: rgba(10, 14, 39, 0.95);
+    padding: 20px;
+    gap: 0;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav a {
+    padding: 12px 0;
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .page-header {
+    height: auto;
+    padding: 60px 20px;
+    margin-top: 60px;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .page-header p {
+    font-size: 1.05rem;
+  }
+
+  section {
+    padding: 80px 6%;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .contact-form {
+    padding: 40px;
+  }
+
+  #chat-window {
+    width: calc(100% - 40px);
+    bottom: 100px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 60px 5%;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-form {
+    padding: 30px 20px;
+  }
+
+  .info-block {
+    gap: 15px;
+  }
+
+  .contact-info {
+    gap: 40px;
+  }
+
+  nav ul {
+    width: calc(100% + 12%);
+    margin-left: -6%;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg-accent">
+  <div class="accent-blob blob-1"></div>
+  <div class="accent-blob blob-2"></div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <a href="index.html" class="logo">AVILA & AVILA</a>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <ul id="navMenu">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="about.html">Nosotros</a></li>
+    <li><a href="services.html">Servicios</a></li>
+    <li><a href="projects.html">Proyectos</a></li>
+    <li><a href="contact.html" class="active">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="content">
+    <h1>Contáctanos</h1>
+    <p>Estamos listos para discutir tu proyecto de ingeniería</p>
+  </div>
+</div>
+
+<section>
+  <div class="section-label">Ponte en Contacto</div>
+  <h2 class="section-title">¿Necesitas Soluciones en Ingeniería?</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="info-block">
+        <div class="info-icon">📍</div>
+        <div class="info-content">
+          <h3>Ubicación</h3>
+          <p>Bogotá, Colombia<br>Carrera 5 # 12-45<br>Centro Empresarial</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-icon">📞</div>
+        <div class="info-content">
+          <h3>Teléfono</h3>
+          <p>+57 (1) 234-5678<br>+57 (1) 234-5679<br>Disponible 24/7</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-icon">✉️</div>
+        <div class="info-content">
+          <h3>Email</h3>
+          <p>info@avilaavila.co<br>proyectos@avilaavila.co<br>soporte@avilaavila.co</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-icon">⏰</div>
+        <div class="info-content">
+          <h3>Horario</h3>
+          <p>Lunes - Viernes: 8:00 - 18:00<br>Sábado: 9:00 - 14:00<br>Emergencias 24/7</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <h3>Formulario de Consulta</h3>
+
+      <div class="form-group">
+        <label for="name">Nombre Completo</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Empresa</label>
+        <input type="text" id="company" name="company">
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Asunto</label>
+        <input type="text" id="subject" name="subject" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar Consulta</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <h2>AVILA & AVILA</h2>
+  <p>Ingeniería Eléctrica y Metalmecánica de Precisión</p>
+  <p style="margin-top: 20px; color: #6b7280;">Bogotá, Colombia | Soluciones de Ingeniería Global</p>
+</footer>
+
+<button id="chat-button" onclick="toggleChat()">🤖</button>
+
+<div id="chat-window">
+  <div id="chat-header">ASISTENTE IA - AVILA</div>
+  <div id="chat-messages">
+    Hola 👋<br><br>
+    ¿Cómo podemos ayudarte con tu proyecto de ingeniería?
+  </div>
+  <div id="chat-input">
+    <input id="userInput" placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()">→</button>
+  </div>
+</div>
+
+<script>
+
+function toggleChat() {
+  const chatWindow = document.getElementById('chat-window');
+  chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function sendMessage() {
+  const input = document.getElementById('userInput');
+  const messages = document.getElementById('chat-messages');
+  const userText = input.value.trim();
+
+  if (!userText) return;
+
+  messages.innerHTML += '<br><br><strong>Tú:</strong> ' + escapeHtml(userText);
+
+  const response = 'Gracias por tu consulta. Uno de nuestros especialistas en ingeniería se contactará contigo en breve para discutir los detalles de tu proyecto.';
+
+  messages.innerHTML += '<br><br><strong style="color: #00d4ff;">ASISTENTE:</strong> ' + response;
+
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function escapeHtml(text) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+function toggleMenu() {
+  const navMenu = document.getElementById('navMenu');
+  navMenu.classList.toggle('active');
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const formData = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    company: form.company.value,
+    subject: form.subject.value,
+    message: form.message.value
+  };
+
+  console.log('Formulario enviado:', formData);
+  
+  alert('¡Gracias por tu consulta! Nos pondremos en contacto pronto.');
+  form.reset();
+}
+
+</script>
+
+</body>
+
+</html>
